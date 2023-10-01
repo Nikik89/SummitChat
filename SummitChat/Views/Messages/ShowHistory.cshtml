@@ -1,0 +1,27 @@
+﻿@model List<Message>
+
+<h2>История сообщений</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Message ID</th>
+            <th>Сообщение</th>
+            <th>Отправитель</th>
+            <th>Получатель</th>
+            <th>Дата и время</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var message in Model)
+        {
+            <tr>
+                <td>@message.MessageID</td>
+                <td></td>
+                <td>@message.SenderID</td>
+                <td>@message.ReceiverID</td>
+                <td>@message.Timestamp</td>
+            </tr>
+        }
+    </tbody>
+</table>

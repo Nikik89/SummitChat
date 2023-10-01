@@ -1,0 +1,287 @@
+﻿@section Styles {
+    <link href="@Url.Content("~/css/dialogue.css")" rel="stylesheet" type="text/css" />
+}
+
+@{
+
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+    <header>
+        <div class="logo">S</div>
+        <div class="profile-container">
+            <a>Профиль</a>
+            <div class="profile-img"></div>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="users-section">
+            
+            <div class="users-list">
+            <form id="messageForm" asp-action="Create">
+                <button class="add-users" type="button" id="add">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M11.9999 6.40002V17.6M6.3999 12H17.5999" stroke="#03A179" stroke-width="1.2" stroke-linecap="round" />
+                    </svg>
+                    добавить собеседника
+                </button>
+                <input type="text" id="userName" name="userName" placeholder="Имя" />
+                <input type="text" id="userPhone" name="userPhone" placeholder="Телефон" />
+            </form>
+                <div class="user-container" id="user1" onclick="chooseUser(this)">
+                    <div class="profile-img"></div>
+                    <div class="user-container-inner">
+
+                        <div class="username">Никита Епифанов</div>
+                        <div class="msg-preview">Привет, как дела?</div>
+                    </div>
+                    <div class="msg-time-container">Сб, 9:41</div>
+                </div>
+                <div class="user-container" id="user2" onclick="chooseUser(this)">
+                    <div class="profile-img"></div>
+                    <div class="user-container-inner">
+
+                        <div class="username">Никита Епифанов</div>
+                        <div class="msg-preview">Привет, как дела?</div>
+                    </div>
+                    <div class="msg-time-container">Сб, 9:41</div>
+                </div>
+                <div class="user-container" id="user3" onclick="chooseUser(this)">
+                    <div class="profile-img"></div>
+                    <div class="user-container-inner">
+
+                        <div class="username">Никита Епифанов</div>
+                        <div class="msg-preview">Привет, как дела?</div>
+                    </div>
+                    <div class="msg-time-container">Сб, 9:41</div>
+                </div>
+                <div class="user-container" id="user4" onclick="chooseUser(this)">
+                    <div class="profile-img"></div>
+                    <div class="user-container-inner">
+
+                        <div class="username">Никита Епифанов</div>
+                        <div class="msg-preview">Привет, как дела?</div>
+                    </div>
+                    <div class="msg-time-container">Сб, 9:41</div>
+                </div>
+                <div class="user-container" id="user5" onclick="chooseUser(this)">
+                    <div class="profile-img"></div>
+                    <div class="user-container-inner">
+
+                        <div class="username">Никита Епифанов</div>
+                        <div class="msg-preview">Привет, как дела?</div>
+                    </div>
+                    <div class="msg-time-container">Сб, 9:41</div>
+                </div>
+                <div class="user-container" id="user6" onclick="chooseUser(this)">
+                    <div class="profile-img"></div>
+                    <div class="user-container-inner">
+
+                        <div class="username">Никита Епифанов</div>
+                        <div class="msg-preview">Привет, как дела?</div>
+                    </div>
+                    <div class="msg-time-container">Сб, 9:41</div>
+                </div>
+            </div>
+
+            <h1>Форма для отправки группой</h1>
+            <form>
+                <input type="text" id="inputToGroup" name="inputToGroup" placeholder="Введите текст">
+                <input type="text" id="addedPhone" placeholder="Введите номер">
+                <button type="button" id="addPhone">Добавить</button>
+            </form>
+            <ul id="number-list">
+                <!-- Сюда будут добавляться номера -->
+            </ul>
+
+
+            <div class="group-send-container">
+                <button type="button" id="sendToGroup">Отправить группой</button>
+
+                <input type="file" id="file-input" accept=".txt" style="display: none;" />
+                <svg id="file-icon" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+                    <path d="M30 17.25V10.5L23.25 3H7.5C7.10218 3 6.72064 3.15804 6.43934 3.43934C6.15804 3.72064 6 4.10218 6 4.5V31.5C6 31.8978 6.15804 32.2794 6.43934 32.5607C6.72064 32.842 7.10218 33 7.5 33H16.5M24.75 21.75V32.25M19.5 27H30" stroke="#03A179" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M22.5 3V10.5H30" stroke="#03A179" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>
+        </section>
+
+        <section class="chat-section">
+            <span class="default-chat-text">Выберите собеседника <br> в списке чатов</span>
+            <form>
+                <input type="text" id="searchPhone" placeholder="Введите телефон"/>
+                <button type="submit" id="showHistory">Показать Историю</button>
+            </form>
+            <div class="dialog-container"></div>
+
+            <div class="message-input-container">
+                <form id="messageForm" asp-action="Create">
+                <input type="text" class="message-input" id="userInput" name="UserInput" placeholder="Введите сообщение..." />
+                <svg xmlns="http://www.w3.org/2000/svg" width="37" height="37" id="proceed_svg" viewBox="0 0 37 37" fill="none">
+                    <g type ="button" id="submit">
+                        <circle id="Ellipse 113" cx="18.0056" cy="18.0044" r="18"  fill="#D2D2D2" />
+                        <path id="Vector 159" d="M26.4058 18.0046L9.60576 18.0046M26.4058 18.0046L22.2058 13.2046M26.4058 18.0046L22.2058 22.8046" stroke="white" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" />
+                    </g>
+                </svg>
+                </form>
+                <div id="resultMessage"></div>
+            </div>
+        </section>
+    </main>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    let previousChecked = null;
+
+    function chooseUser(sender){
+        previousChecked != null ? previousChecked.classList.remove("checked") : null;
+        sender.classList.add("checked");
+        previousChecked = sender;
+    }
+    const fileIcon = document.getElementById("file-icon");
+    const fileInput = document.getElementById("file-input");
+
+    const inputToGroup = document.getElementById("inputToGroup");
+    const numberList = document.getElementById("number-list");
+     $(function () {
+         $("#submit").click(inputHandler);
+         $("#add").click(userHandler);
+         $("#addPhone").click(addPhoneForSpam);
+         $("#sendToGroup").click(sendMsgToGroup);
+         $("#showHistory").click(showHistory);
+     });
+
+    function showHistory(){
+        event.preventDefault();// Предотвратить отправку формы по умолчанию
+        var searchPhone = document.getElementById("searchPhone").value;
+        var url = "/Messages/ShowHistory?phoneNumbers=" + encodeURIComponent(searchPhone);
+        window.location.href = url;
+    }
+
+     fileIcon.addEventListener("click", function () {
+        fileInput.click();
+    });
+
+    fileInput.addEventListener("change", function () {
+        const file = fileInput.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                const fileContent = e.target.result;
+                const numbersAndText = parseFileContent(fileContent);
+                displayNumbersAndText(numbersAndText);
+            };
+
+            reader.readAsText(file);
+        } else {
+            numberList.textContent = "Выберите файл для обработки.";
+        }
+    });
+
+    function parseFileContent(fileContent) {
+        const parts = fileContent.split(';');
+        const numbers = parts[0].split(',');
+        const text = parts[1];
+
+        return { numbers, text };
+    }
+
+    function displayNumbersAndText(data) {
+        const { numbers, text } = data;
+
+        inputToGroup.value = text;
+        // Выводим номера на странице
+        if (numbers.length > 0) {
+
+            for (const number of numbers) {
+                const li = document.createElement("li");
+                li.textContent = number;
+                numberList.appendChild(li);
+            }
+        } else {
+            numberList.textContent = "В файле нет номеров.";
+        }
+    }
+        function inputHandler() {
+            var phoneInput = $("#phoneInput").val();
+            var userInput = $("#userInput").val();
+
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("SendMessage", "Send")",
+                data: {
+                    phoneInput: phoneInput,
+                    userInput: userInput
+                },
+                success: function (result) {
+                    if (result.success) {
+                        $("#resultMessage").html(result.message);
+                    } else {
+                        $("#resultMessage").html("Произошла ошибка при отправке сообщения.");
+                    }
+                },
+                error: function () {
+                    $("#resultMessage").html("Произошла ошибка при отправке сообщения.");
+                }
+            });
+        };
+        function userHandler() {
+            var userName = $("#userName").val();
+            var userPhone = $("#userPhone").val();
+
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("AddUserToChat", "AddUser")",
+                data: {
+                    userName: userName,
+                    userPhone: userPhone
+                },
+                success: function (result) {
+                    if (result.success) {
+                        $("#resultMessage").html(result.message);
+                    } else {
+                        $("#resultMessage").html("Произошла ошибка при отправке сообщения.");
+                    }
+                },
+                error: function () {
+                    $("#resultMessage").html("Произошла ошибка при отправке сообщения.");
+                }
+            });
+        };
+        
+
+        function addPhoneForSpam() {
+            const number = addedPhone.value;
+            if (number.trim() !== "") {
+                const listItem = document.createElement("li");
+                listItem.textContent = number;
+                numberList.appendChild(listItem);
+                addedPhone.value = "";
+            }
+        };
+        function sendMsgToGroup() {
+            const numbers = [];
+            const listItems = numberList.getElementsByTagName("li");
+            var inputToGroup = $("#inputToGroup").val();
+            for (let i = 0; i < listItems.length; i++) {
+                const number = listItems[i].textContent;
+                numbers.push(number);
+            }
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("SendMessengeToGroup", "SendToGroup")",
+                data: {
+                    usersPhone: numbers,
+                    inputToGroup: inputToGroup
+                }
+            });
+        };
+
+
+
+</script>

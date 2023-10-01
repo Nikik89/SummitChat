@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@section Styles {
+    <link href="@Url.Content("~/css/site.css")" rel="stylesheet" type="text/css" />>
+}
+
+
+<div>
+    
+    <main>
+
+        <div class="glass-bg">
+
+            <h2>
+                Вход <br>
+                SUMMIT CHAT
+            </h2>
+            <a asp-area="" asp-controller="Home" asp-action="dialogue">
+                <svg xmlns="http://www.w3.org/2000/svg" width="37" height="37" id="proceed_svg" viewBox="0 0 37 37" fill="none">
+                    <g>
+                        <circle id="Ellipse 113" cx="18.0056" cy="18.0044" r="18" transform="rotate(90 18.0056 18.0044)" fill="#D2D2D2" />
+                        <path id="Vector 159" d="M26.4058 18.0046L9.60576 18.0046M26.4058 18.0046L22.2058 13.2046M26.4058 18.0046L22.2058 22.8046" stroke="white" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" />
+                    </g>
+                </svg>
+            </a>
+            
+            <input type="tel" id="tel" name="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Номер телефона">
+
+            <a>Создать аккаунт</a>
+
+        </div>
+
+    </main>
+    
+    @*<div>
+        <div>User</div>
+        <div><input type="text" id="userInput" /></div>
+    </div>
+    <div>
+        <div>Message</div>
+        <div><input type="text" id="messageInput" /></div>
+    </div>
+    <div>
+        <div>
+            <input type="button" id="sendButton" value="Send Message" />
+        </div>
+    </div>*@
+
+
+@*<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>*@
+</div>
